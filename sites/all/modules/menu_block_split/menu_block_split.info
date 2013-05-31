@@ -1,0 +1,14 @@
+name = Menu block split
+description = Split a menu tree over two blocks
+package = Other
+core = 7.x
+php = 5
+dependencies[] = menu
+
+
+; Information added by drupal.org packaging script on 2011-12-30
+version = "7.x-2.x-dev"
+core = "7.x"
+project = "menu_block_split"
+datestamp = "1325205362"
+

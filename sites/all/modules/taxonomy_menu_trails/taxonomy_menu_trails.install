@@ -1,0 +1,109 @@
+<?php
+
+/**
+ * @file
+ * Install, uninstall and update functions for taxonomy_menu_trails.
+ * 
+ * @author Dmitriy.trt      <http://drupal.org/user/329125>
+ */
+
+/**
+ * Implements hook_uninstall()
+ */
+function taxonomy_menu_trails_uninstall() {
+  db_delete('variable')
+    ->condition('name', 'taxonomy_menu_trails_%', 'LIKE')
+    ->execute();
+}
+
+function taxonomy_menu_trails_update_6101() {
+  $types = array_filter(variable_get('taxonomy_menu_trails_node_types', array()));
+  foreach ($types as $key => $type) {
+    unset($types[$key]);
+    $type_vocs = taxonomy_get_vocabularies($type);
+    if (!empty($type_vocs)) {
+      foreach ($type_vocs as $vid => $voc) {
+        $type_vocs[$vid] = $vid;
+      }
+      $types[$key] = $type_vocs;
+    }
+  }
+  variable_set('taxonomy_menu_trails_node_types', $types);
+  return array();
+}
+
+/**
+ * Convert module settings from D6 to D7 format
+ */
+function taxonomy_menu_trails_update_7100() {
+  //Get old settings
+  $only_without_menu = variable_get('taxonomy_menu_trails_only_without_menu', TRUE);
+  $old_selection_method = variable_get('taxonomy_menu_trails_selection_method', 'first');
+  $tm_integration = variable_get('taxonomy_menu_trails_integration_with_tm', module_exists('taxonomy_menu'));
+  $node_types = variable_get('taxonomy_menu_trails_node_types', array());
+  $paths_ui = variable_get('taxonomy_menu_trails_node_paths_ui', '');
+  
+  //Convert to new format
+  switch ($old_selection_method) {
+    case 'last':
+    case 'last-with-menu':
+      $selection_method = 'last';
+      break;
+    case 'deepest-in-lineage':
+      $selection_method = 'deepest-in-menu';
+      break;
+    default:
+      $selection_method = 'first';
+      break;
+  }
+
+  module_load_include('module', 'taxonomy_menu_trails');
+  module_load_include('admin.inc', 'taxonomy_menu_trails');
+
+  $new_vars = array();
+  //Re-compile custom path patterns, they will be the same for all node types
+  $regexps = _taxonomy_menu_trails_compile_path_patterns($paths_ui, 'node');
+  $all_regexps = array();
+  foreach ($node_types as $type => $vocs) {
+    $instances = array();
+    foreach ($vocs as $vid) {
+      $field_name = 'taxonomy_vocabulary_' . $vid;
+      $instances[$field_name] = $field_name;
+    }
+    _taxonomy_menu_trails_sort_by_weight($instances, 'node', $type);
+    if (!empty($instances)) {
+      $new_vars['taxonomy_menu_trails_node_' . $type] = array(
+        'selection_method' => $selection_method,
+        'only_without_menu' => $only_without_menu,
+        'tm_integration' => $tm_integration,
+        'instances' => $instances,
+        'paths_ui' => $paths_ui,
+      );
+      if (!empty($regexps)) {
+        //Add regexps to the index
+        $all_regexps['node'][$type] = $regexps;
+      }
+    }
+  }
+  $new_vars['taxonomy_menu_trails__path_regexps'] = $all_regexps;
+
+  //Save new vars
+  foreach ($new_vars as $name => $var) {
+    variable_set($name, $var);
+  }
+  
+  //Clean up
+  $old_vars = array(
+    'taxonomy_menu_trails_only_without_menu',
+    'taxonomy_menu_trails_selection_method',
+    'taxonomy_menu_trails_integration_with_tm',
+    'taxonomy_menu_trails_node_types',
+    'taxonomy_menu_trails_node_paths_ui',
+    'taxonomy_menu_trails_node_paths',
+  );
+  foreach ($old_vars as $name) {
+    if (!isset($new_vars[$name])) {
+      variable_del($name);
+    }
+  }
+}

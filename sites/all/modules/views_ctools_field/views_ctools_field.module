@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * Implements hook_views_api().
+ */
+function views_ctools_field_views_api() {
+  return array(
+    'api' => 2,
+  );
+}
+
+/**
+ * Get Context Config
+ *
+ * Provides an array of information needed to configure a ctools context for views
+ *
+ * @return array
+ */
+function views_ctools_field_context_config($id = NULL) {
+  $config = array();
+  $config['node'] = array(
+    'id' => 'node',
+    'title' => t('Chaos Tools Content - Node'),
+    'table' => 'node',
+    'key' => 'nid',
+    'load' => 'node_load',
+  );
+  $config['user'] = array(
+    'id' => 'user',
+    'title' => t('Chaos Tools Content - User'),
+    'table' => 'users',
+    'key' => 'uid',
+    'load' => 'user_load',
+  );
+  $config['term'] = array(
+    'id' => 'term',
+    'title' => t('Chaos Tools Content - Term'),
+    'table' => 'taxonomy_term_data',
+    'key' => 'tid',
+    'load' => 'taxonomy_get_term',
+  );
+
+  if ($id) {
+    if (is_array($id)) {
+      $config_return = array();
+      foreach ($id as $val) {
+        if (!empty($val) && array_key_exists($val, $config)) {
+          $config_return[$val] = $config[$val];
+        }
+      }
+      return $config_return;
+    }
+    elseif (!empty($id) && array_key_exists($id, $config)) {
+      return $config[$id];
+    }
+  }
+  else {
+    return $config;
+  }
+}

@@ -1,0 +1,13 @@
+<?php
+
+/*
+ * Implements hook_uninstall().
+ */
+function imageeditor_uninstall() {
+  // removes all variables that start with "imageeditor_"
+  // it will also delete imageeditor_inline_ variables if any - and it is fine
+  $result = db_query("SELECT name FROM {variable} WHERE name LIKE 'imageeditor_%'");
+  foreach ($result as $item) {
+    variable_del($item->name);
+  }
+}

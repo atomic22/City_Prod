@@ -1,0 +1,4 @@
+2012-08-09 14:34:33 - PHP Notice:  Error: MySQL server has gone away<br />Error No: 2006<br />UPDATE currency SET value = '1.00000', date_modified = '2012-08-09 14:34:33' WHERE code = 'USD' in /home/cityofs/public_html/store/system/database/mysql.php on line 49
+2012-08-09 14:34:33 - PHP Notice:  Error: MySQL server has gone away<br />Error No: 2006<br />SELECT * FROM language in /home/cityofs/public_html/store/system/database/mysql.php on line 49
+2012-08-09 14:34:33 - PHP Notice:  Error: MySQL server has gone away<br />Error No: 2006<br />SELECT * FROM language in /home/cityofs/public_html/store/system/database/mysql.php on line 49
+2012-08-09 14:37:31 - PHP Notice:  Error: MySQL server has gone away<br />Error No: 2006<br />UPDATE currency SET value = '1.00000', date_modified = '2012-08-09 14:37:31' WHERE code = 'USD' in /home/cityofs/public_html/store/system/database/mysql.php on line 49

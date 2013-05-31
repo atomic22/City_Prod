@@ -1,0 +1,29 @@
+<modification>
+
+	<id>Remove OpenCart info and donation in footer</id>
+	<version>1.0.0</version>
+	<vqmver>2.1.6</vqmver>
+	<author>Gigo</author>
+
+	<file name="catalog/view/theme/default/template/common/footer.tpl">
+	<!-- <file name="catalog/view/theme/*/template/common/footer.tpl"> -->
+		<operation error="skip">
+            <search position="replace"><![CDATA[
+           OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+            ]]></search>
+            <add trim="true"><![CDATA[
+            
+            ]]></add>
+        </operation>
+        
+		<operation error="skip">
+            <search position="replace"><![CDATA[
+            Please donate via PayPal to donate@opencart.com
+            ]]></search>
+            <add trim="true"><![CDATA[
+            
+            ]]></add>
+        </operation>
+	</file>
+
+</modification>

@@ -1,0 +1,18 @@
+
+To install this extension:
+1. Unzip the zip file's contents into the admin folder for your OpenCart application,
+   preserving its folders.
+2. Access the URL apsona_install.php in your admin area. For instance, if your admin URL is
+   http://mystore.com/admin, then access the URL http://mystore.com/admin/apsona_install.php.
+   This will automatically create a menu item for Apsona ShopAdmin in the System menu of your
+   OpenCart admin area.
+3. Log in to your admin area and navigate to System - Users - User groups, edit the
+   Top Administrator group, and enable access to the file tool/apsona_sa.php.
+You can now click the Apsona ShopAdmin menu item in your System menu to access ShopAdmin.
+
+We will gladly assist you in installing this extension. Please reply to this email or click
+http://apsona.com/pages/ec/contact.html if you need assistance.
+
+Best regards,
+The Apsona team
+http://apsona.com

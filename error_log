@@ -1,0 +1,2 @@
+[06-Aug-2012 12:55:21] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 24 bytes) in /home/cityofs/public_html/includes/cache.inc on line 447
+[06-Aug-2012 12:55:42] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 122880 bytes) in /home/cityofs/public_html/sites/all/modules/xmlsitemap/xmlsitemap.install on line 110

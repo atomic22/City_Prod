@@ -1,0 +1,11 @@
+name = Browscap
+description = Provides a replacement for PHPs get_browser() function and collects visitor browser statistics.
+core = 7.x
+configure = admin/reports/browscap/settings
+
+; Information added by drupal.org packaging script on 2012-03-19
+version = "7.x-1.3"
+core = "7.x"
+project = "browscap"
+datestamp = "1332134737"
+

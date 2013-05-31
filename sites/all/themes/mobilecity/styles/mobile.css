@@ -1,0 +1,93 @@
+div.header {
+	background-image: url("/sites/all/themes/mobilecity/images/bg-footer.png");
+}
+
+.site-logo {
+	float: left;
+}
+
+div.main-content{
+	background-image: url("/sites/all/themes/mobilecity/images/city-bg.jpg");
+	overflow: hidden;
+	background-size: 100% 100%;
+}
+
+.navigation {
+	margin-top: -10px;
+	/* background: #E6E6E6; */
+}
+
+.navigation h2 {
+	margin-left: 5px;
+	padding: 7px 25px 5px 10px;
+	line-height: 40px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+ul#main-menu {
+	display: none;
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	z-index: 2;
+}
+#main-menu li{
+	/* float: left; */
+	position: relative;
+	width: 185px;
+}
+
+#sidebar-menu {
+	display: none;
+}
+
+span.themenu {
+	display: block;
+}
+
+.content-primary {
+	float: left;
+	width: 100%;
+}
+
+div.views-row {
+	background: white;
+	color: black;
+    margin-bottom: 10px;
+    padding: 10px;
+	font-size: 14px;
+	font-weight: normal;
+	text-shadow: none;
+}
+
+div.pane-content{
+	border-top: 1px solid #959595;
+    list-style: none outside none;
+    margin-left: 0;
+    padding: 0;
+}
+
+ul.department_list {
+	background-color: white;
+	opacity:0.6;
+	text-shadow: none;
+}
+
+ul.department_list a:hover{
+	background-color: black;
+	color: white;
+}
+
+a.ui-link {
+	display: block;
+	position: relative;
+	padding: 10px 0;
+}
+
+div.footer div.views-row{
+	color: black;
+    text-align: center;
+}

@@ -1,0 +1,28 @@
+
+
+#header .site-name {
+   text-shadow: none;
+}
+
+#home-rotator {
+    background: url("../img/bg-home-rotator.png") repeat-x scroll center bottom #00436E;
+    border: medium none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    clear: both;
+    min-height: 500px;
+    padding: 0;
+}
+/* #home-rotator { 
+  background: url(../img/bg-home-rotator3.png) transparent repeat-x 0 -5px;  padding-bottom: 0;
+  height: 318px;
+
+  } */
+
+
+.home-rotator-slide {
+   background: url(../img/bg-home-rotator3.png) transparent repeat-x 0 -23px;
+   padding-bottom: 0;
+}
+
+.breaking-news {margin-top: 7px;}
+
